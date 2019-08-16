@@ -8,6 +8,7 @@ export class RecipeService{
     constructor(private shoppingListService: ShoppingListService){
     }   
    recipeEmitter = new EventEmitter<Recipe>();
+   private recipe:Recipe;
    private recipes: Recipe[] = [
         new Recipe(
         'Tasty Shnitzel', 
@@ -32,5 +33,9 @@ export class RecipeService{
 
       onAddtoShoppingList(ingredients: Ingredient[]){
         this.shoppingListService.addIngredients(ingredients);
+      }
+
+      getRecipe(id: number): Recipe{
+        return this.recipes[id];
       }
 }
